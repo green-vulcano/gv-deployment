@@ -19,16 +19,22 @@
 
 package it.greenvulcano.deployment;
 
+import java.io.Serializable;
+
 /**
  * @author Domenico Barra - eisenach@gmail.com
  */
-public abstract class BaseDescriptor {
+public abstract class BaseDescriptor implements Serializable {
 
+    String name;
     Payload payload;
 
-    public BaseDescriptor() { }
+    public BaseDescriptor(String name) {
+        this.name = name;
+    }
 
-    public BaseDescriptor(Payload payload) {
+    public BaseDescriptor(String name, Payload payload) {
+        this(name);
         setPayload(payload);
     }
 
@@ -42,5 +48,19 @@ public abstract class BaseDescriptor {
 
     public Payload getPayload() {
         return payload;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        SystemDescriptor that = (SystemDescriptor) o;
+        if (!name.equals(that.name)) return false;
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return name.hashCode();
     }
 }

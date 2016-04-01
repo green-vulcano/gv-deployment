@@ -26,14 +26,13 @@ import java.util.List;
  */
 public class SystemDescriptor extends BaseDescriptor{
 
-    String name;
-
     public SystemDescriptor(String name) {
-        this.name = name;
+        super(name);
     }
 
-    public SystemDescriptor(Payload payload, String name) {
-        super(payload);
-        this.name = name;
+    public SystemDescriptor(String name, Payload payload) {
+        super(name,payload);
     }
+
+
 }

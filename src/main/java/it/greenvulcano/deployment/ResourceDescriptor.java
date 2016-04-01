@@ -20,13 +20,15 @@
 package it.greenvulcano.deployment;
 
 /**
- * Hello world!
- *
+ * @author Domenico Barra - eisenach@gmail.com
  */
-public class App 
-{
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
+public class ResourceDescriptor extends BaseDescriptor {
+
+    public ResourceDescriptor(String name) {
+        super(name);
+    }
+
+    public ResourceDescriptor(String name, Payload payload) {
+        super(name, payload);
     }
 }

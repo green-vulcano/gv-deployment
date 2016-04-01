@@ -22,11 +22,12 @@ package it.greenvulcano.deployment;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.Serializable;
 
 /**
  * @author Domenico Barra - eisenach@gmail.com
  */
-public class Payload {
+public class Payload implements Serializable {
 
     byte[] payload;
 

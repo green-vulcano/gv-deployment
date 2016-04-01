@@ -19,39 +19,18 @@
 
 package it.greenvulcano.deployment;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import static org.junit.Assert.*;
 
 /**
- * Unit test for simple App.
+ * @author Domenico Barra - eisenach@gmail.com
  */
-public class AppTest 
-    extends TestCase
-{
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public AppTest( String testName )
-    {
-        super( testName );
+public class VersionTest {
+
+    @org.junit.Test
+    public void testCompare() throws Exception {
+        assertEquals(0, Version.compare(new Version("4.0.0"), new Version("4.0.0")));
+        assertTrue(Version.compare(new Version("4.0.0"), new Version("4.0.1")) > 0);
+        assertTrue(Version.compare(new Version("4.0.0.5"), new Version("4.0.1")) > 0);
     }
 
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( AppTest.class );
-    }
-
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp()
-    {
-        assertTrue( true );
-    }
 }

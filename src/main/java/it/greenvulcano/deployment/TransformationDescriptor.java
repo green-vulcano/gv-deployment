@@ -24,14 +24,9 @@ package it.greenvulcano.deployment;
  */
 public class TransformationDescriptor extends BaseDescriptor {
 
-    String name;
+    public TransformationDescriptor(String name) { super(name); }
 
-    public TransformationDescriptor(String name) {
-        this.name = name;
-    }
-
-    public TransformationDescriptor(Payload payload, String name) {
-        super(payload);
-        this.name = name;
+    public TransformationDescriptor(String name, Payload payload) {
+        super(name, payload);
     }
 }

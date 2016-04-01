@@ -24,14 +24,14 @@ import java.util.List;
 /**
  * @author Domenico Barra - eisenach@gmail.com
  */
-public class ServiceDescriptor extends BaseDescriptor {
+public class DeploymentUnit {
 
-    public ServiceDescriptor(String name) {
-        super(name);
-    }
+    private String name;
+    private String version;
+    private List<ServiceDescriptor> services;
+    private List<TransformationDescriptor> transformations;
+    private List<ResourceDescriptor> resources;
 
-    public ServiceDescriptor(String name, Payload payload) {
-        super(name, payload);
-    }
+
 
 }
