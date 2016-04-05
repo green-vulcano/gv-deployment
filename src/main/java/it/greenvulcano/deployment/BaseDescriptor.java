@@ -26,17 +26,16 @@ import java.io.Serializable;
  */
 public abstract class BaseDescriptor implements Serializable {
 
-    String name;
-    Payload payload;
+    private String name;
+    private Payload payload = null;
+    private Visibility visibility = defaultVisibility();
 
     public BaseDescriptor(String name) {
         this.name = name;
     }
 
-    public BaseDescriptor(String name, Payload payload) {
-        this(name);
-        setPayload(payload);
-    }
+
+    public String getName() { return name; }
 
     public final boolean hasPayload() {
         return payload != null;
@@ -50,11 +49,29 @@ public abstract class BaseDescriptor implements Serializable {
         return payload;
     }
 
+    public Visibility getVisibility() {
+        return visibility;
+    }
+
+    public void setVisibility(Visibility visibility) {
+        this.visibility = visibility;
+    }
+
+    /**
+     * This method should be overridden by subclasses in order to return
+     * a reasonable default visibility qualifier. As of now, general
+     * default visibility is {@link Visibility#PUBLIC}.
+     * @return the default visibility qualifier for the current descriptor type
+     */
+    public Visibility defaultVisibility() {
+        return Visibility.PUBLIC;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        SystemDescriptor that = (SystemDescriptor) o;
+        BaseDescriptor that = (BaseDescriptor) o;
         if (!name.equals(that.name)) return false;
         return true;
     }
